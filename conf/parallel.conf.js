@@ -2,35 +2,27 @@ username= process.env.LT_USERNAME || "<your username>",
 accessKey=  process.env.LT_ACCESS_KEY || "<your accessKey>",
 
 exports.config = {
-  'specs': [ '../specs/single.js' ],
+  'specs': [ '../specs/single.js','../specs/GoogleSearch.js' ],
 
   seleniumAddress: 'https://'+username+':'+accessKey+'@hub.lambdatest.com/wd/hub',
 
   'commonCapabilities': {
-    'build': 'protractor-selenium-sample',
+    'build': 'protractor-parallel-specs',
     'tunnel': false
   },
 
   'multiCapabilities': [{
     'browserName': 'Chrome',
     'version':'latest',
-    'platform': 'Windows 10'
+    'platform': 'Windows 10',
+     shardTestFiles: true,
+
   },{
     'browserName': 'Safari',
     'version':'latest',
-    'platform': 'macOS Mojave'
-  },{
-    'browserName': 'MicrosoftEdge',
-    'version':'latest',
-    'platform': 'Windows 10'
-  },{
-    'browserName': 'Firefox',
-    'version':'latest',
-    'platform': 'Windows 10'
-  },{
-    'browserName': 'Internet explorer',
-    'version':'latest',
-    'platform': 'Windows 10'
+    'platform': 'macOS Mojave',
+     shardTestFiles: true,
+
   }],
 
   onPrepare: () => {
