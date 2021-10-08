@@ -15,13 +15,13 @@ exports.config = {
     'browserName': 'Chrome',
     'version':'latest',
     'platform': 'Windows 10',
-     shardTestFiles: true,
+     shardTestFiles: true,      //required to run each spec file as individual test session on LT
 
   },{
     'browserName': 'Safari',
     'version':'latest',
     'platform': 'macOS Mojave',
-     shardTestFiles: true,
+     shardTestFiles: true,     //required to run each spec file as individual test session on LT
 
   }],
 
