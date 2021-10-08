@@ -7,7 +7,7 @@ exports.config = {
   seleniumAddress: 'https://'+username+':'+accessKey+'@hub.lambdatest.com/wd/hub',
 
   'commonCapabilities': {
-    'build': 'protractor-parallel-specs',
+    'build': 'protractor-parallel-specs-',
     'tunnel': false
   },
 
@@ -33,11 +33,11 @@ exports.config = {
         spec_id = parseInt(specStr[specStr.length -1])
         browser.getProcessedConfig().then(function (config) {
           var fullName = config.specs[spec_id];
-          browser.executeScript("lambda-name="+fullName.split(/(\\|\/)/g).pop())
+          browser.executeScript("lambda-name="+fullName.split(/(\\|\/)/g).pop())      //naming each spec as a test Name
         });
       },
       specDone: function(result) {
-        browser.executeScript("lambda-status="+result.status);
+        browser.executeScript("lambda-status="+result.status);                      //setting the status of the test on LT
       }
     };
     jasmine.getEnv().addReporter(myReporter);
